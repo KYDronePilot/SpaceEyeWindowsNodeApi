@@ -1,0 +1,24 @@
+{
+  "name": "earth_from_space_live_windows_node_api",
+  "version": "1.0.0",
+  "description": "Node Windows API for Earth from Space Live",
+  "main": "index.js",
+  "gypfile": true,
+  "scripts": {
+    "configure": "node-gyp configure",
+    "start": "node index.js",
+    "build:dev": "node-gyp -j 16 build --debug",
+    "build": "node-gyp -j 16 build",
+    "rebuild:dev": "node-gyp -j 16 rebuild --debug",
+    "rebuild": "node-gyp -j 16 rebuild",
+    "clean": "node-gyp clean"
+ },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-gyp": "^7.0.0"
+  },
+  "dependencies": {
+    "node-addon-api": "^3.0.0"
+  }
+}

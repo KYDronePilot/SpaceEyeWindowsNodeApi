@@ -17,12 +17,12 @@ void IDesktopWallpaperAPI::TearDownWallpaperPointer(IDesktopWallpaper* p_wallpap
 Napi::Object IDesktopWallpaperAPI::GetMonitorDevicePathAt(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
     UINT monitorIndex = info[0].As<Napi::Number>().Uint32Value();
-    LPWSTR monitorPath;
+    LPWSTR monitorPath = L"";
 
-    HRESULT co_init, co_create, wall_res;
+    HRESULT co_init = E_FAIL, co_create = E_FAIL, wall_res = E_FAIL;
     IDesktopWallpaper* p_wallpaper = nullptr;
     SetupWallpaperPointer(&p_wallpaper, &co_init, &co_create);
-    if (SUCCEEDED(co_init) && SUCCEEDED(co_create)) {
+    if (SUCCEEDED(co_create)) {
         wall_res = p_wallpaper->GetMonitorDevicePathAt(monitorIndex, &monitorPath);
     }
     TearDownWallpaperPointer(p_wallpaper, &co_create);

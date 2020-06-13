@@ -7,8 +7,8 @@
       ],
       "cflags_cc!": ["-fno-exceptions"],
       "sources": [
-        "main.cpp",
-        "src/idesktopwallpaper.cpp"
+        "cpp/main.cpp",
+        "cpp/idesktopwallpaper.cpp"
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")"

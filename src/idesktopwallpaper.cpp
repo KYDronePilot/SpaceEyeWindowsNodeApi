@@ -1,26 +1,41 @@
 #include "idesktopwallpaper.h"
 
-HRESULT IDesktopWallpaperAPI::_GetMonitorDevicePathAt(UINT monitorIndex, LPWSTR *monitorPath) {
-    HRESULT hr = CoInitialize(nullptr);
-    IDesktopWallpaper* p_wallpaper = nullptr;
-    hr = CoCreateInstance(__uuidof(DesktopWallpaper), nullptr, CLSCTX_ALL, IID_PPV_ARGS(&p_wallpaper));
-    p_wallpaper->GetMonitorDevicePathAt(monitorIndex, monitorPath);
-    p_wallpaper->Release();
-    p_wallpaper = NULL;
-    return hr;
+void IDesktopWallpaperAPI::SetupWallpaperPointer(IDesktopWallpaper** p_wallpaper, HRESULT* co_init, HRESULT* co_create) {
+    *co_init = CoInitialize(NULL);
+    if (SUCCEEDED(*co_init)) {
+        *co_create = CoCreateInstance(__uuidof(DesktopWallpaper), NULL, CLSCTX_ALL, IID_PPV_ARGS(p_wallpaper));
+    }
 }
 
-Napi::String IDesktopWallpaperAPI::GetMonitorDevicePathAt(const Napi::CallbackInfo& info) {
+void IDesktopWallpaperAPI::TearDownWallpaperPointer(IDesktopWallpaper* p_wallpaper, HRESULT* co_create) {
+    if (SUCCEEDED(*co_create)) {
+        p_wallpaper->Release();
+    }
+    CoUninitialize();
+}
+
+Napi::Object IDesktopWallpaperAPI::GetMonitorDevicePathAt(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
     UINT monitorIndex = info[0].As<Napi::Number>().Uint32Value();
     LPWSTR monitorPath;
-    _GetMonitorDevicePathAt(monitorIndex, &monitorPath);
+
+    HRESULT co_init, co_create, wall_res;
+    IDesktopWallpaper* p_wallpaper = nullptr;
+    SetupWallpaperPointer(&p_wallpaper, &co_init, &co_create);
+    if (SUCCEEDED(co_init) && SUCCEEDED(co_create)) {
+        wall_res = p_wallpaper->GetMonitorDevicePathAt(monitorIndex, &monitorPath);
+    }
+    TearDownWallpaperPointer(p_wallpaper, &co_create);
 
     std::wstring wstr(monitorPath);
     std::u16string u16str(wstr.begin(), wstr.end());
 
-    auto returnValue = Napi::String::New(env, u16str);
-    return returnValue;
+    auto obj = Napi::Object::New(env);
+    obj.Set(Napi::String::New(env, "output"), Napi::String::New(env, u16str));
+    obj.Set(Napi::String::New(env, "wall_res"), Napi::Number::New(env, wall_res));
+    obj.Set(Napi::String::New(env, "co_init"), Napi::Number::New(env, co_init));
+    obj.Set(Napi::String::New(env, "co_create"), Napi::Number::New(env, co_create));
+    return obj;
 }
 
 HRESULT IDesktopWallpaperAPI::_GetMonitorDevicePathCount(UINT *count) {

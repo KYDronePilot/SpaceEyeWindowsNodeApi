@@ -3,8 +3,9 @@
 #include "ShObjIdl.h"
 
 namespace IDesktopWallpaperAPI {
-    HRESULT _GetMonitorDevicePathAt(UINT monitorIndex, LPWSTR *monitorPath);
-    Napi::String GetMonitorDevicePathAt(const Napi::CallbackInfo& info);
+    void SetupWallpaperPointer(IDesktopWallpaper** p_wallpaper, HRESULT* co_init, HRESULT* co_create);
+    void TearDownWallpaperPointer(IDesktopWallpaper* p_wallpaper, HRESULT* co_create);
+    Napi::Object GetMonitorDevicePathAt(const Napi::CallbackInfo& info);
     HRESULT _GetMonitorDevicePathCount(UINT *count);
     Napi::Number GetMonitorDevicePathCount(const Napi::CallbackInfo& info);
     HRESULT _GetWallpaper(LPCWSTR monitorID, LPWSTR  *wallpaper);

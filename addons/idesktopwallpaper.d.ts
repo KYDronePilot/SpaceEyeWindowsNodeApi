@@ -1,4 +1,4 @@
-interface IDesktopReturnObject<OT> {
+export interface IDesktopReturnObject<OT> {
     output: OT
     wall_res: number
     co_init: number

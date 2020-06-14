@@ -1,13 +1,23 @@
-const testAddon = require('./build/Debug/win32addon.node');
+// const testAddon = require('../addons');
 
-console.log(testAddon.GetMonitorDevicePathCount());
-console.log(testAddon.GetMonitorDevicePathAt(0));
-const monID = testAddon.GetMonitorDevicePathAt(0).output;
-console.log(testAddon.GetWallpaper(monID));
+// import * as win32addon from '../addons/idesktopwallpaper';
 
-testAddon.SetWallpaper(monID, "C:\\Users\\Michael Galliers\\Desktop\\wallpaper.jpg");
-console.log(testAddon.GetPosition());
+import {IDesktopWallpaper} from '../addons';
 
-testAddon.SetPosition("DWPOS_FIT");
+console.log(IDesktopWallpaper.GetMonitorDevicePathCount().output);
 
-module.exports = testAddon;
+// console.log(testAddon.GetMonitorDevicePathCount());
+// console.log(testAddon.GetMonitorDevicePathAt(0));
+// const monID = testAddon.GetMonitorDevicePathAt(0).output;
+// console.log(testAddon.GetWallpaper(monID));
+
+// testAddon.SetWallpaper(monID, "C:\\Users\\Michael Galliers\\Desktop\\wallpaper.jpg");
+// console.log(testAddon.GetPosition());
+
+// testAddon.SetPosition("DWPOS_FIT");
+
+function GetMonitorDevicePathCount(): number {
+    
+}
+
+export * from '../addons';

@@ -1,7 +1,7 @@
 {
   "targets": [
     {
-      "target_name": "win32addon",
+      "target_name": "idesktopwallpaper",
       "cflags!": [
         "-fno-exceptions"
       ],

@@ -6,12 +6,11 @@
   "gypfile": true,
   "scripts": {
     "configure": "node-gyp configure",
-    "build-ts": "rimraf dist && tsc -b",
-    "start": "node src/index.ts",
+    "build:addon": "node-gyp build && ts-node bin/addon.ts",
+    "build:ts": "rimraf dist && tsc -b",
+    "build": "npm run build:addon && npm run build:ts",
     "build:dev": "node-gyp -j 16 build --debug",
-    "build": "node-gyp -j 16 build",
-    "rebuild:dev": "node-gyp -j 16 rebuild --debug",
-    "rebuild": "node-gyp -j 16 rebuild",
+    "start": "ts-node src/index.ts",
     "clean": "node-gyp clean"
   },
   "author": "",
@@ -20,6 +19,7 @@
     "@types/node": "^14.0.13",
     "node-gyp": "^7.0.0",
     "rimraf": "^3.0.2",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   },
   "dependencies": {

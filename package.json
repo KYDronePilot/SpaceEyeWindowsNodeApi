@@ -11,10 +11,12 @@
     "build": "npm run build:addon && npm run build:ts",
     "build:dev": "node-gyp -j 16 build --debug",
     "start": "ts-node src/index.ts",
-    "clean": "node-gyp clean"
+    "clean": "node-gyp clean",
+    "prepare": "npm run build"
   },
   "author": "",
   "license": "ISC",
+  "files": ["addons/*", "src/index.ts"],
   "devDependencies": {
     "@types/node": "^14.0.13",
     "node-gyp": "^7.0.0",

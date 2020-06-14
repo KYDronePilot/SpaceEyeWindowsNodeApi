@@ -1,5 +1,5 @@
-import {IDesktopWallpaper} from '../addons';
-import {IDesktopReturnObject} from '../addons/idesktopwallpaper';
+import {IDesktopWallpaper} from './addons';
+import {IDesktopReturnObject} from './addons/idesktopwallpaper';
 
 // enum HResult {
 //     S_OK,            // Operation successful

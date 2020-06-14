@@ -2,7 +2,7 @@
   "name": "earth_from_space_live_windows_node_api",
   "version": "1.0.0",
   "description": "Node Windows API for Earth from Space Live",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "gypfile": true,
   "scripts": {
     "configure": "node-gyp configure",
@@ -16,7 +16,9 @@
   },
   "author": "",
   "license": "ISC",
-  "files": ["addons/*", "src/index.ts"],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@types/node": "^14.0.13",
     "node-gyp": "^7.0.0",

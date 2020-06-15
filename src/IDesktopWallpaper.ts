@@ -46,14 +46,14 @@ import {IDesktopReturnObject} from './addons/idesktopwallpaper';
 //     [HResult.E_INVALIDARG]: 0x80070057,
 // }
 
-class HResultError extends Error {
+export class HResultError extends Error {
     constructor(error: number) {
         super(error.toString());
         Object.setPrototypeOf(this, new.target.prototype);
     }
 }
 
-enum WallpaperPosition {
+export enum WallpaperPosition {
     center = 'DWPOS_CENTER',
     tile = 'DWPOS_TILE',
     stretch = 'DWPOS_STRETCH',

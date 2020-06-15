@@ -1,5 +1,5 @@
 module.exports = {
     IDesktopWallpaper: {
-        ...require('./idesktopwallpaper')
+        ...require('./idesktopwallpaper.node')
     }
 }

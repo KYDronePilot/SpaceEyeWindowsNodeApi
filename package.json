@@ -8,7 +8,7 @@
   "scripts": {
     "configure": "node-gyp configure",
     "build:addon": "node-gyp build && ts-node bin/addon.ts",
-    "build:ts": "tsc -b && copyfiles src/addons/* dist/addons/",
+    "build:ts": "tsc -b && cpx src/addons/* dist/addons",
     "build": "npm run build:addon && npm run build:ts",
     "build:dev": "node-gyp -j 16 build --debug",
     "start": "ts-node src/index.ts",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/node": "^14.0.13",
     "copyfiles": "^2.3.0",
+    "cpx": "^1.5.0",
     "node-gyp": "^7.0.0",
     "rimraf": "^3.0.2",
     "ts-node": "^8.10.2",

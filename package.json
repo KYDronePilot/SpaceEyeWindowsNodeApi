@@ -1,5 +1,5 @@
 {
-  "name": "SpaceEyeWindowsNodeApi",
+  "name": "space-eye-windows-node-api",
   "version": "1.0.0",
   "description": "Native Windows API for SpaceEye app to set multi-monitor wallpaper images",
   "main": "dist/index.js",

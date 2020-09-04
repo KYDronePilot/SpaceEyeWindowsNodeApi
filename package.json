@@ -1,7 +1,7 @@
 {
-  "name": "earth_from_space_live_windows_node_api",
+  "name": "SpaceEyeWindowsNodeApi",
   "version": "1.0.0",
-  "description": "Node Windows API for Earth from Space Live",
+  "description": "Native Windows API for SpaceEye app to set multi-monitor wallpaper images",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "gypfile": true,

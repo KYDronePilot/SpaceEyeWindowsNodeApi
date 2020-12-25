@@ -25,6 +25,14 @@
     "bugs": {
         "url": "https://github.com/KYDronePilot/space-eye-windows-node-api/issues"
     },
+    "keywords": [
+        "spaceeye",
+        "nodejs",
+        "win32",
+        "windows",
+        "cpp",
+        "node-addon-api"
+    ],
     "homepage": "https://github.com/KYDronePilot/space-eye-windows-node-api",
     "devDependencies": {
         "@types/fs-extra": "^9.0.6",

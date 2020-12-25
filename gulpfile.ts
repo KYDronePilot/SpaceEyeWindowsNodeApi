@@ -10,8 +10,8 @@ const SRC = path.join(__dirname, 'src')
 const DIST = path.join(__dirname, 'dist')
 const SRC_ADDONS = path.join(SRC, 'addons')
 const DIST_ADDONS = path.join(DIST, 'addons')
-const DIST_ADDON_FILE = path.join(DIST_ADDONS, 'desktopwallpaper.node')
-const BUILT_RELEASE_ADDON = path.join(BUILD, 'Release', 'desktopwallpaper.node')
+const DIST_ADDON_FILE = path.join(DIST_ADDONS, 'idesktopwallpaper.node')
+const BUILT_RELEASE_ADDON = path.join(BUILD, 'Release', 'idesktopwallpaper.node')
 
 const defaultSpawnOptions: SpawnOptions = {
     env: {
@@ -63,4 +63,5 @@ async function copyAddonFiles() {
 const prepare = series(clean, configure)
 const buildSrc = parallel(buildTs, buildAddon)
 
+export const buildCi = series(buildTs, copyAddonFiles)
 export const build = series(prepare, buildSrc, copyAddonFiles)

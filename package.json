@@ -1,12 +1,13 @@
 {
     "name": "space-eye-windows-node-api",
-    "version": "1.0.0-beta1",
+    "version": "1.0.0-beta2",
     "description": "Native Windows API for SpaceEye app, to set multi-monitor wallpaper images",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "gypfile": true,
     "scripts": {
         "build": "gulp build",
+        "build-ci": "gulp buildCi",
         "build:dev": "node-gyp -j 16 build --debug"
     },
     "files": [

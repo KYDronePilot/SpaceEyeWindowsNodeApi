@@ -26,12 +26,13 @@
         "url": "https://github.com/KYDronePilot/space-eye-windows-node-api/issues"
     },
     "keywords": [
-        "spaceeye",
         "nodejs",
         "win32",
         "windows",
         "cpp",
-        "node-addon-api"
+        "node-addon-api",
+        "wallpaper",
+        "spaceeye"
     ],
     "homepage": "https://github.com/KYDronePilot/space-eye-windows-node-api",
     "devDependencies": {

@@ -1,1 +1,1 @@
-export * as IDesktopWallpaper from './idesktopwallpaper';
+export * as IDesktopWallpaper from './idesktopwallpaper'

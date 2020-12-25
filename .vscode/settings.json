@@ -1,5 +1,8 @@
 {
     "files.associations": {
         "xstring": "cpp"
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true
     }
 }

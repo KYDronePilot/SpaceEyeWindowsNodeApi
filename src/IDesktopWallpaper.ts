@@ -1,5 +1,5 @@
-import {IDesktopWallpaper as IDesktopWallpaperRaw} from './addons';
-import {IDesktopReturnObject} from './addons/idesktopwallpaper';
+import { IDesktopWallpaper as IDesktopWallpaperRaw } from './addons'
+import { IDesktopReturnObject } from './addons/idesktopwallpaper'
 
 // enum HResult {
 //     S_OK,            // Operation successful
@@ -48,8 +48,8 @@ import {IDesktopReturnObject} from './addons/idesktopwallpaper';
 
 export class HResultError extends Error {
     constructor(error: number) {
-        super(error.toString());
-        Object.setPrototypeOf(this, new.target.prototype);
+        super(error.toString())
+        Object.setPrototypeOf(this, new.target.prototype)
     }
 }
 
@@ -64,8 +64,7 @@ export enum WallpaperPosition {
 }
 
 function checkResultAndThrowError(result: number) {
-    if (result < 0)
-        throw new HResultError(result);
+    if (result < 0) throw new HResultError(result)
 }
 
 /**
@@ -73,41 +72,41 @@ function checkResultAndThrowError(result: number) {
  * @param result - The native result to check
  */
 function checkResultsAndThrowError<RT>(result: IDesktopReturnObject<RT>) {
-    checkResultAndThrowError(result.co_init);
-    checkResultAndThrowError(result.co_create);
-    checkResultAndThrowError(result.wall_res);
+    checkResultAndThrowError(result.co_init)
+    checkResultAndThrowError(result.co_create)
+    checkResultAndThrowError(result.wall_res)
 }
 
 export function GetMonitorDevicePathCount(): number {
-    const res = IDesktopWallpaperRaw.GetMonitorDevicePathCount();
-    checkResultsAndThrowError(res);
-    return res.output;
+    const res = IDesktopWallpaperRaw.GetMonitorDevicePathCount()
+    checkResultsAndThrowError(res)
+    return res.output
 }
 
 export function GetMonitorDevicePathAt(monitorIndex: number): string {
-    const res = IDesktopWallpaperRaw.GetMonitorDevicePathAt(monitorIndex);
-    checkResultsAndThrowError(res);
-    return res.output;
+    const res = IDesktopWallpaperRaw.GetMonitorDevicePathAt(monitorIndex)
+    checkResultsAndThrowError(res)
+    return res.output
 }
 
 export function GetWallpaper(monitorId: string): string {
-    const res = IDesktopWallpaperRaw.GetWallpaper(monitorId);
-    checkResultsAndThrowError(res);
-    return res.output;
+    const res = IDesktopWallpaperRaw.GetWallpaper(monitorId)
+    checkResultsAndThrowError(res)
+    return res.output
 }
 
 export function SetWallpaper(monitorId: string, wallpaperPath: string) {
-    const res = IDesktopWallpaperRaw.SetWallpaper(monitorId, wallpaperPath);
-    checkResultsAndThrowError(res);
+    const res = IDesktopWallpaperRaw.SetWallpaper(monitorId, wallpaperPath)
+    checkResultsAndThrowError(res)
 }
 
 export function GetPosition(): WallpaperPosition {
-    const res = IDesktopWallpaperRaw.GetPosition();
-    checkResultsAndThrowError(res);
-    return res.output as WallpaperPosition;
+    const res = IDesktopWallpaperRaw.GetPosition()
+    checkResultsAndThrowError(res)
+    return res.output as WallpaperPosition
 }
 
 export function SetPosition(position: WallpaperPosition) {
-    const res = IDesktopWallpaperRaw.SetPosition(position);
-    checkResultsAndThrowError(res);
+    const res = IDesktopWallpaperRaw.SetPosition(position)
+    checkResultsAndThrowError(res)
 }
